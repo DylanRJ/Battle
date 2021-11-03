@@ -30,7 +30,7 @@ class MyApp < Sinatra::Base
   post '/play' do
     p params
     session[:player_1_attack] = params[:player_1_attack]
-    session[:player_2_attack] = params[:player_1_attack]
+    session[:player_2_attack] = params[:player_2_attack]
     redirect '/play'
   end
 end
