@@ -8,10 +8,6 @@ class MyApp < Sinatra::Base
 
   enable :sessions
 
-  # get '/' do
-  #   'Testing infrastructure working!'
-  # end
-
   get '/' do
     erb(:index)
   end
@@ -26,6 +22,15 @@ class MyApp < Sinatra::Base
   get '/play' do
     @player_1 = session[:player_1]
     @player_2 = session[:player_2]
+    @player_1_attack = session[:player_1_attack]
+    @player_2_attack = session[:player_2_attack]
     erb(:play)
+  end
+
+  post '/play' do
+    p params
+    session[:player_1_attack] = params[:player_1_attack]
+    session[:player_2_attack] = params[:player_1_attack]
+    redirect '/play'
   end
 end
